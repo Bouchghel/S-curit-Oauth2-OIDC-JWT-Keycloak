@@ -43,6 +43,18 @@ public class CustomerController {
 
     @GetMapping("/products")
     public String products(Model model) {
+        SecurityContext context = SecurityContextHolder.getContext();
+        Authentication authentication = context.getAuthentication();
+        OAuth2AuthenticationToken oAuth2AuthenticationToken= (OAuth2AuthenticationToken) authentication;
+        DefaultOidcUser oidcUser = (DefaultOidcUser) oAuth2AuthenticationToken.getPrincipal();
+        String jwtTokenValue=oidcUser.getIdToken().getTokenValue();
+        RestClient restClient = RestClient.create("http://localhost:8098");
+        List<Product> products = restClient.get()
+                .uri("/products")
+                .headers(httpHeaders -> httpHeaders.set(HttpHeaders.AUTHORIZATION, "Bearer "+jwtTokenValue))
+                .retrieve()
+                .body(new ParameterizedTypeReference<>(){});
+        model.addAttribute("products",products);
         return "products";
     }
 
