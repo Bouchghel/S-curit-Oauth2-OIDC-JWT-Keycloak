@@ -38,7 +38,7 @@
 
 
 ## Via Angular :  
-### Création d'un Client (sans Client authentication)
+### Création d'un Client (sans Client authentication (x)client-secret)
 ![clientAngular](https://github.com/Bouchghel/S-curit-Oauth2-OIDC-JWT-Keycloak/assets/93221225/555975c5-b74a-43a1-b1fb-07a82e73b39b)  
 ### Integration :  
 ![IntagrationKeycloakAngular](https://github.com/Bouchghel/S-curit-Oauth2-OIDC-JWT-Keycloak/assets/93221225/96d8dec0-e59b-4925-8aec-aecffc2d080b)  
